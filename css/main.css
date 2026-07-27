@@ -10,14 +10,18 @@
     --secondary: #58D6E6;
     --accent: #A8E063;
     --border: #454545;
-    --shadow: #1a1a1a;
+
+    /* Shadows */
+    --shadow-sm:0 4px 12px rgba(0,0,0,.15);
+    --shadow-md:0 8px 24px rgba(0,0,0,.20);
+    --shadow-lg:0 12px 36px rgba(0,0,0,.25);
 
     /* Typography */
-    --font-heading: Space_Grotesk, Manrope, Outfit; 
-    --font-body: Atkinson_Hyperlegible, Inter;
-    --font-code: Space_Grotesk;
+    --font-heading: "Space Grotesk", "Manrope", "Outfit", sans-serif; 
+    --font-body: "Atkinson Hyperlegible", "Inter", sans-serif;
+    --font-code: "Space Grotesk", sans-serif;
 
-    /* Font size */
+    /* Font Sizes */
     --fs-xl:4rem;
     --fs-lg:2.5rem;
     --fs-md:1.5rem;
@@ -38,6 +42,9 @@
 
     /* Container */
     --container-width:1200px;
+
+    /* Transition */
+    --transition: .25s ease;
 }
 
 /* =====================================================
@@ -55,16 +62,10 @@ html{
     scroll-behavior:smooth;
 }
 
-body{
-    background:var(--background);
-    color:var(--text);
-    font-family:var(--font-body);
-    line-height:1.6;
-}
-
 img{
     display:block;
     max-width:100%;
+    height:auto;
 }
 
 ul{
@@ -84,6 +85,9 @@ body{
     color:var(--text);
     font-family:var(--font-body);
     line-height:1.6;
+
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 h1{
@@ -95,14 +99,23 @@ h2{
 }
 
 h3{
-    font-size:var(--fs-lg);
+    font-size:var(--fs-md);
+    line-height:1.2;
+    font-weight:700;
 }
 
-p{}
+p{
+    max-width:65ch;
+    margin-bottom:var(--space-sm);
+}
 
-strong{}
+strong{
+    font-weight:700;
+}
 
-em{}
+em{
+    font-style:italic;
+}
 
 section{
     padding-block:var(--space-xl);
@@ -119,10 +132,6 @@ section{
 .projects-grid{
     display:flex;
     display:grid;
-    gap
-    justify-content
-    align-items
-    max-width
 }
 
 .about-container{}
@@ -201,18 +210,85 @@ section{
 /* =====================================================
    6. SECTIONS
 ===================================================== */
+/*  NAVBAR  */
 .navbar{
-    background;
-    border;
-    color;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(37,37,37,.90);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid var(--border);
 }
-.logo{}
+.navbar .container{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:80px;
+}
+/*  NAVBAR LOGO   */
+.logo{
+    font-family:var(--font-heading);
+    font-size:1.5rem;
+    font-weight:700;
+
+    color:var(--primary);
+
+    letter-spacing:.08em;
+
+    transition:color var(--transition);
+}
+.logo:hover{
+    color:var(--secondary);
+}
+/*  NAVBAR LINKS*/
+.nav-links{
+    display:flex;
+    gap:var(--space-md);
+}
+.nav-links a{
+    position:relative;
+
+    font-weight:500;
+
+    transition:color var(--transition);
+}
+.nav-links a:hover{
+    color:var(--primary);
+}
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:100%;
+    height:2px;
+
+    background:var(--primary);
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    transition:transform var(--transition);
+}
+.nav-links a:hover::after{
+    transform:scaleX(1);
+}
+
+
 .hero-text{}
 .hero-image{}
 #games{}
 #journey{}
 #about{}
-#contacts{}
+#contact{}
 
 
 /* =====================================================
